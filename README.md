@@ -64,15 +64,21 @@ graph TD;
 ## Diagrama de Tiempos
 ```mermaid
 sequenceDiagram
-    participant ESP32
-    participant Serial
-    participant LED
-    ESP32->>LED: Encender
-    ESP32->>Serial: "ON"
-    ESP32->>LED: Esperar 500 ms
-    ESP32->>LED: Apagar
-    ESP32->>Serial: "OFF"
-    ESP32->>LED: Esperar 500 ms
+    participant Arduino as ESP-32-S3 Board
+    participant Serial as Serial Monitor
+    participant LED as Built-in LED
+    Arduino->>LED: digitalWrite(LED_BUILTIN, HIGH)
+    LED->>Arduino: State = ON
+    Arduino->>Serial: Serial.println("ON")
+    Serial->>Arduino: Receive "ON"
+    Arduino->>LED: delay(500)
+    LED->>Arduino: State = ON
+    Arduino->>LED: digitalWrite(LED_BUILTIN, LOW)
+    LED->>Arduino: State = OFF
+    Arduino->>Serial: Serial.println("OFF")
+    Serial->>Arduino: Receive "OFF"
+    Arduino->>LED: delay(500)
+    LED->>Arduino: State = OFF
 ```
 
 ## Ejercicios Adicionales
