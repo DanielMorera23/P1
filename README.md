@@ -48,7 +48,7 @@ void loop() {
 
 ## Diagrama de Flujo
 ```mermaid
-flowchart TD;
+graph TD;
   A[Inicio] --> B[Configurar Pin LED como Salida]
   B --> C[Iniciar Terminal Serie]
   C --> D{Bucle Infinito}
