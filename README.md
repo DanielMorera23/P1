@@ -242,15 +242,19 @@ sequenceDiagram
    Arduino->>Serial: Serial.println("OFF")
    Serial->>Arduino: Receive "OFF"
 ```
+## Tiempo libre del procesador
 
-## Ejercicios Adicionales
-1. Modificar el programa para acceder directamente a los registros de los puertos de entrada y salida.
-2. Eliminar los `delay()` y medir la frecuencia máxima de parpadeo con un osciloscopio.
-3. Leer un valor de un convertidor A/D y enviarlo por el puerto serie.
-4. Leer la temperatura interna del ESP32 y mostrarla en el puerto serie.
+El tiempo libre del procesador se puede determinar con la siguiente fórmula:
 
-## Referencias
-- [Guía de inicio con PlatformIO](https://electropeak.com/learn/getting-started-with-platformio-ide-to-program-esp32/)
-- [Leer ADC en ESP32](https://randomnerdtutorials.com/esp32-adc-analog-read-arduino-ide/)
-- [Sensor de temperatura interno ESP32](https://gist.github.com/xxlukas42/7e7e18604f61529b8398f7fcc5785251)
+Tiempo libre = Tiempo total del ciclo - Tiempo que el procesador está ocupado ejecutando el bucle
+
+Para calcularlo, primero se debe conocer la duración total de un ciclo, incluyendo los retardos introducidos por delay(). Luego, al medir cuánto tiempo toma la ejecución del bucle sin contar las pausas, restamos ambos valores. De esta manera, obtenemos el tiempo en el que el procesador no está realizando tareas activas.
+
+
+
+
+
+
+
+
 
