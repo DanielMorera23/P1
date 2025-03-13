@@ -59,7 +59,19 @@ graph TD;
   H --> I[Enviar OFF por Serial]
   I --> J[Esperar 1000 ms]
   J --> D
+```
 
+## Diagrama de Tiempos
+```mermaid
+gantt
+    dateFormat  HH:mm:ss
+    title Diagrama de tiempos - Blink ESP32
+
+    section LED
+    Encendido   :done, 00:00:00, 00:00:01
+    Apagado     :done, 00:00:01, 00:00:02
+    Encendido   :done, 00:00:02, 00:00:03
+    Apagado     :done, 00:00:03, 00:00:04
 ```
 
 ## Ejercicios Adicionales
