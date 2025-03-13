@@ -63,15 +63,16 @@ graph TD;
 
 ## Diagrama de Tiempos
 ```mermaid
-gantt
-    dateFormat  HH:mm:ss
-    title Diagrama de tiempos - Blink ESP32
-
-    section LED
-    Encendido   :done, 00:00:00, 00:00:01
-    Apagado     :done, 00:00:01, 00:00:02
-    Encendido   :done, 00:00:02, 00:00:03
-    Apagado     :done, 00:00:03, 00:00:04
+sequenceDiagram
+    participant ESP32
+    participant Serial
+    participant LED
+    ESP32->>LED: Encender
+    ESP32->>Serial: "ON"
+    ESP32->>LED: Esperar 500 ms
+    ESP32->>LED: Apagar
+    ESP32->>Serial: "OFF"
+    ESP32->>LED: Esperar 500 ms
 ```
 
 ## Ejercicios Adicionales
