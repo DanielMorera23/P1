@@ -103,11 +103,43 @@ void loop() {
 ```
 
 ##  Medidas con la frecuencia al máximo
+1.
 ```cpp
+#include <Arduino.h>
 
+   #define LED_BUILTIN 23
+
+   void setup() {                
+      pinMode(LED_BUILTIN, OUTPUT);   
+      Serial.begin(115200);
+   }
+
+   void loop() {
+      Serial.println("ON");
+      digitalWrite(LED_BUILTIN, HIGH);
+      Serial.println("OFF");      
+      digitalWrite(LED_BUILTIN, LOW);
+   }
 ```
+2. 
+```cpp
+#include <Arduino.h>
 
+    #define LED_BUILTIN 23
+    uint32_t *gpio_out = (uint32_t *)GPIO_OUT_REG;
 
+    void setup() {                
+        pinMode(LED_BUILTIN, OUTPUT);   
+        Serial.begin(115200);
+    }
+
+    void loop() {
+        Serial.println("ON");
+        *gpio_out |= (1 << LED_BUILTIN);
+        Serial.println("OFF");      
+        *gpio_out ^= (1 << LED_BUILTIN);
+    }
+```
 ## Diagrama de Flujo con delay
 ```mermaid
 graph TD;
