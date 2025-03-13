@@ -69,6 +69,39 @@ void loop() {
     }
 ```
 
+## Modificar el programa para que actue directamente sobre los registros de los puertos de entrada y salida
+```cpp
+#include <Arduino.h>
+
+#define LED_BUILTIN 23
+#define DELAY 1000
+
+#define GPIO_OUT_REG 0x3FF4400C
+
+void setup() {
+  Serial.begin(115200);
+  pinMode(LED_BUILTIN, OUTPUT);
+}
+
+void loop() {
+  volatile uint32_t *gpio_out = (volatile uint32_t *)GPIO_OUT_REG;
+
+  *gpio_out |= (1 << LED_BUILTIN);
+  digitalWrite(LED_BUILTIN, HIGH);
+
+  Serial.println("ON");
+  
+  delay(DELAY);
+
+  *gpio_out ^= (1 << LED_BUILTIN);
+  digitalWrite(LED_BUILTIN, LOW);
+
+  Serial.println("OFF");
+
+  delay(DELAY);
+}
+```
+
 
 ## Diagrama de Flujo con delay
 ```mermaid
