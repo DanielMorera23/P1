@@ -102,6 +102,11 @@ void loop() {
 }
 ```
 
+##  Medidas con la frecuencia al máximo
+```cpp
+
+```
+
 
 ## Diagrama de Flujo con delay
 ```mermaid
