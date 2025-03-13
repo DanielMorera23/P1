@@ -13,7 +13,7 @@ El objetivo de esta práctica es producir el parpadeo periódico de un LED utili
 ```cpp
 #define LED_BUILTIN 2
 #define DELAY 500
-
+ 
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
 }
