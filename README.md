@@ -25,7 +25,7 @@ void loop() {
   delay(DELAY);
 }
 ```
-
+ 
 ## Modificación con delay
 ```cpp
 #define LED_BUILTIN 2
