@@ -70,7 +70,7 @@ void loop() {
 ```
 
 
-## Diagrama de Flujo
+## Diagrama de Flujo con delay
 ```mermaid
 graph TD;
   A[Inicio] --> B[Configurar Pin LED como Salida]
@@ -85,7 +85,7 @@ graph TD;
   J --> D
 ```
 
-## Diagrama de Tiempos
+## Diagrama de Tiempos con delay
 ```mermaid
 sequenceDiagram
     participant Arduino as ESP-32-S3 Board
@@ -103,6 +103,44 @@ sequenceDiagram
     Serial->>Arduino: Receive "OFF"
     Arduino->>LED: delay(500)
     LED->>Arduino: State = OFF
+```
+
+## Diagrama de Flujo sin delay
+```mermaid
+graph TD;
+  A[Inicio] --> B[Configurar Pin LED como Salida]
+  B --> C[Iniciar Terminal Serie]
+  C --> D{Bucle Infinito}
+  D -->|Tiempo transcurrido?| E{Sí}
+  E -->|Alternar LED| F[Cambiar Estado del LED]
+  F --> G[Enviar Estado por Serial]
+  G --> H[Actualizar Temporizador]
+  H --> D
+  E -->|No| D
+```
+
+## Diagrama de Tiempos sin delay
+```mermaid
+sequenceDiagram
+   participant Arduino as ESP-32 Board
+   participant Serial as Serial Monitor
+   participant LED as Built-in LED
+   Arduino->>LED: digitalWrite(LED_BUILTIN, HIGH)
+   LED->>Arduino: State = ON
+   Arduino->>Serial: Serial.println("ON")
+   Serial->>Arduino: Receive "ON"
+   Arduino->>LED: digitalWrite(LED_BUILTIN, LOW)
+   LED->>Arduino: State = OFF
+   Arduino->>Serial: Serial.println("OFF")
+   Serial->>Arduino: Receive "OFF"
+   Arduino->>LED: digitalWrite(LED_BUILTIN, HIGH)
+   LED->>Arduino: State = ON
+   Arduino->>Serial: Serial.println("ON")
+   Serial->>Arduino: Receive "ON"
+   Arduino->>LED: digitalWrite(LED_BUILTIN, LOW)
+   LED->>Arduino: State = OFF
+   Arduino->>Serial: Serial.println("OFF")
+   Serial->>Arduino: Receive "OFF"
 ```
 
 ## Ejercicios Adicionales
