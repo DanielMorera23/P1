@@ -103,7 +103,7 @@ void loop() {
 ```
 
 ##  Medidas con la frecuencia al máximo
-1.
+1. PRIMER APARTADO
 ```cpp
 #include <Arduino.h>
 
@@ -121,7 +121,7 @@ void loop() {
       digitalWrite(LED_BUILTIN, LOW);
    }
 ```
-2. 
+2. SEGUNDO APARTADO
 ```cpp
 #include <Arduino.h>
 
@@ -138,6 +138,36 @@ void loop() {
         *gpio_out |= (1 << LED_BUILTIN);
         Serial.println("OFF");      
         *gpio_out ^= (1 << LED_BUILTIN);
+    }
+```
+3. TERCER APARTADO
+``` cpp
+#include <Arduino.h>
+    #define LED_BUILTIN 23
+
+    void setup() {                
+    pinMode(LED_BUILTIN, OUTPUT);   
+    }
+
+    void loop() {
+    digitalWrite(LED_BUILTIN, HIGH);
+    digitalWrite(LED_BUILTIN, LOW);
+    }
+```
+4. CUARTO APARTADO
+ ``` cpp
+#include <Arduino.h>
+
+    #define LED_BUILTIN 23
+    uint32_t *gpio_out = (uint32_t *)GPIO_OUT_REG;
+
+    void setup() {                
+    pinMode(LED_BUILTIN, OUTPUT);   
+    }
+
+    void loop() {
+    *gpio_out |= (1 << LED_BUILTIN);
+    *gpio_out ^= (1 << LED_BUILTIN);
     }
 ```
 ## Diagrama de Flujo con delay
