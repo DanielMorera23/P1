@@ -26,7 +26,7 @@ void loop() {
 }
 ```
 
-## Modificación con Salida Serie
+## Modificación con delay
 ```cpp
 #define LED_BUILTIN 2
 #define DELAY 1000
@@ -45,6 +45,30 @@ void loop() {
   delay(DELAY);
 }
 ```
+
+## Modificación sin delay
+```cpp
+#define LED_BUILTIN 23
+    #define DELAY 500
+
+    void setup()
+    {
+        Serial.begin(115200); 
+        // Inializa la comunicación serial la velocidad (baudios)
+        pinMode(LED_BUILTIN, OUTPUT);
+        // Configura el pin como salida del led integrado
+    }
+    void loop()
+    {
+        digitalWrite(LED_BUILTIN, HIGH); // Enciende el LED 
+        Serial.println("ON"); // Mostrar por pantalla 
+        // delay(500); // Sin delay
+        digitalWrite(LED_BUILTIN, LOW); // Apaga el LED
+        Serial.println("OFF");  
+        // delay(500);
+    }
+```
+
 
 ## Diagrama de Flujo
 ```mermaid
