@@ -53,12 +53,13 @@ graph TD;
   B --> C[Iniciar Terminal Serie]
   C --> D{Bucle Infinito}
   D -->|Encender LED| E[LED ON]
-  E --> F[Enviar "ON" por Serial]
+  E --> F[Enviar ON por Serial]
   F --> G[Esperar 1000 ms]
   G --> H[Apagar LED]
-  H --> I[Enviar "OFF" por Serial]
+  H --> I[Enviar OFF por Serial]
   I --> J[Esperar 1000 ms]
   J --> D
+
 ```
 
 ## Ejercicios Adicionales
