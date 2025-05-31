@@ -174,19 +174,18 @@ void loop() {
 ```
 
 ## Diagrama de flujo con retardo
-```mermaid
+mermaid
 graph TD;
-  A[Inicio] --> B[Definir Pin LED como Salida]
-  B --> C[Activar Comunicación Serie]
-  C --> D{Loop}
-  D -->|LED ON| E[Encender LED]
-  E --> F[Mostrar "ON"]
-  F --> G[Retardo de 1000 ms]
+  A[Inicio] --> B[Configurar Pin LED como Salida]
+  B --> C[Iniciar Terminal Serie]
+  C --> D{Bucle Infinito}
+  D -->|Encender LED| E[LED ON]
+  E --> F[Enviar ON por Serial]
+  F --> G[Esperar 1000 ms]
   G --> H[Apagar LED]
-  H --> I[Mostrar "OFF"]
-  I --> J[Retardo de 1000 ms]
+  H --> I[Enviar OFF por Serial]
+  I --> J[Esperar 1000 ms]
   J --> D
-```
 
 ## Diagrama temporal con delay
 ```mermaid
